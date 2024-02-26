@@ -2,10 +2,10 @@ import axios from "axios";
 
 import { configs } from "../configs/configs";
 import { ApiError } from "../errors/api.error";
-import {IQuery} from "../types/query.type";
+import { AirQualityResponse } from "../types/airPollution.type";
+import { IForecastResponse } from "../types/forecast.type";
+import { IQuery } from "../types/query.type";
 import { IWeatherData } from "../types/weather.type";
-import {IForecastResponse} from "../types/forecast.type";
-import {AirQualityResponse} from "../types/airPollution.type";
 
 class WeatherService {
   public async getCurrentWeather(query: IQuery): Promise<IWeatherData> {

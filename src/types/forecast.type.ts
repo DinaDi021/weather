@@ -1,4 +1,4 @@
- interface IForecastItem {
+interface IForecastItem {
   dt: number;
   main: {
     temp: number;
@@ -36,7 +36,7 @@
   dt_txt: string;
 }
 
- interface ICity {
+interface ICity {
   id: number;
   name: string;
   coord: {

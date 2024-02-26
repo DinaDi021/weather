@@ -1,24 +1,27 @@
+import { IForecastResponse } from "../types/forecast.type";
 import { IWeatherData } from "../types/weather.type";
-import {IForecastResponse} from "../types/forecast.type";
 
 export class WeatherPresenter {
   public static weatherToResponse(weather: IWeatherData) {
     return {
       coord: weather.coord,
-      weather: weather.weather.map(item => ({ main: item.main, description: item.description })),
+      weather: weather.weather.map((item) => ({
+        main: item.main,
+        description: item.description,
+      })),
       main: {
         temp: weather.main.temp,
         feels_like: weather.main.feels_like,
-        humidity: weather.main.humidity
+        humidity: weather.main.humidity,
       },
       wind: weather.wind,
       clouds: weather.clouds,
       sys: {
         country: weather.sys.country,
         sunrise: weather.sys.sunrise,
-        sunset: weather.sys.sunset
+        sunset: weather.sys.sunset,
       },
-      name: weather.name
+      name: weather.name,
     };
   }
 
@@ -26,9 +29,9 @@ export class WeatherPresenter {
     return {
       city: {
         name: forecast.city.name,
-        country: forecast.city.country
+        country: forecast.city.country,
       },
-      forecast: forecast.list.map(item => ({
+      forecast: forecast.list.map((item) => ({
         datetime: new Date(item.dt * 1000),
         temperature: item.main.temp,
         feels_like: item.main.feels_like,
@@ -36,13 +39,13 @@ export class WeatherPresenter {
         weather: {
           main: item.weather[0].main,
           description: item.weather[0].description,
-          icon: item.weather[0].icon
+          icon: item.weather[0].icon,
         },
         wind: {
           speed: item.wind.speed,
-          deg: item.wind.deg
-        }
-      }))
+          deg: item.wind.deg,
+        },
+      })),
     };
   }
 }

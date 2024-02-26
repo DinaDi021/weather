@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
+import { WeatherPresenter } from "../presenters/weather.presenter";
 import { weatherService } from "../services/weather.service";
 import { IQuery } from "../types/query.type";
-import { WeatherPresenter } from "../presenters/weather.presenter";
 
 class WeatherController {
   public async getCurrentWeather(
@@ -14,7 +14,7 @@ class WeatherController {
       const currentWeather = await weatherService.getCurrentWeather(
         req.query as IQuery,
       );
-      res.json({data: WeatherPresenter.weatherToResponse(currentWeather)});
+      res.json({ data: WeatherPresenter.weatherToResponse(currentWeather) });
     } catch (e) {
       next(e);
     }
@@ -29,7 +29,7 @@ class WeatherController {
       const forecast = await weatherService.getFiveDayThreeHourForecast(
         req.query as IQuery,
       );
-      res.json({date: WeatherPresenter.forecastToResponse(forecast)});
+      res.json({ date: WeatherPresenter.forecastToResponse(forecast) });
     } catch (e) {
       next(e);
     }
